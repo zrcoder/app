@@ -62,7 +62,7 @@ func (v value) IsUndefined() bool {
 	return true
 }
 
-func (v value) JSValue() Value {
+func (v value) JsValue() Value {
 	return v
 }
 

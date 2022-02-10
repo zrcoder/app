@@ -21,7 +21,7 @@ const (
 
 // Wrapper is implemented by types that are backed by a JavaScript value.
 type Wrapper interface {
-	JSValue() Value
+	JsValue() Value
 }
 
 // Value is the interface that represents a JavaScript value. On wasm
@@ -71,8 +71,8 @@ type Value interface {
 	// IsUndefined reports whether v is the JavaScript value "undefined".
 	IsUndefined() bool
 
-	// JSValue implements Wrapper interface.
-	JSValue() Value
+	// JsValue implements Wrapper interface.
+	JsValue() Value
 
 	// Length returns the JavaScript property "length" of v. It panics if v is
 	// not a JavaScript object.

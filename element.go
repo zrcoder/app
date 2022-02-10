@@ -33,7 +33,7 @@ func (e *elem) Kind() Kind {
 	return HTML
 }
 
-func (e *elem) JSValue() Value {
+func (e *elem) JsValue() Value {
 	return e.jsvalue
 }
 
@@ -228,7 +228,7 @@ func (e *elem) appendChild(c UI, onlyJsValue bool) error {
 	}
 
 	c.setParent(e.self())
-	e.JSValue().appendChild(c)
+	e.JsValue().appendChild(c)
 	return nil
 }
 
@@ -249,7 +249,7 @@ func (e *elem) replaceChildAt(idx int, new UI) error {
 
 	e.body[idx] = new
 	new.setParent(e.self())
-	e.JSValue().replaceChild(new, old)
+	e.JsValue().replaceChild(new, old)
 
 	dismount(old)
 	return nil
@@ -272,7 +272,7 @@ func (e *elem) removeChildAt(idx int) error {
 	body = body[:len(body)-1]
 	e.body = body
 
-	e.JSValue().removeChild(c)
+	e.JsValue().removeChild(c)
 	dismount(c)
 	return nil
 }
@@ -330,13 +330,13 @@ func (e *elem) resolveURLAttr(k, v string) string {
 func (e *elem) setJsAttr(k, v string) {
 	switch k {
 	case "value":
-		e.JSValue().Set("value", v)
+		e.JsValue().Set("value", v)
 
 	case "class":
-		e.JSValue().Set("className", v)
+		e.JsValue().Set("className", v)
 
 	case "contenteditable":
-		e.JSValue().Set("contentEditable", v)
+		e.JsValue().Set("contentEditable", v)
 
 	case "async",
 		"autofocus",
@@ -362,18 +362,18 @@ func (e *elem) setJsAttr(k, v string) {
 			k = "readOnly"
 		}
 		v, _ := strconv.ParseBool(v)
-		e.JSValue().Set(k, v)
+		e.JsValue().Set(k, v)
 
 	default:
 		if isURLAttrValue(k) {
 			v = e.dispatcher().resolveStaticResource(v)
 		}
-		e.JSValue().setAttr(k, v)
+		e.JsValue().setAttr(k, v)
 	}
 }
 
 func (e *elem) delAttr(k string) {
-	e.JSValue().delAttr(k)
+	e.JsValue().delAttr(k)
 	delete(e.attrs, k)
 }
 
@@ -416,7 +416,7 @@ func (e *elem) setJsEventHandler(k string, h eventHandler) {
 	jshandler := makeJsEventHandler(e.self(), h.value)
 	h.jsvalue = jshandler
 	e.events[k] = h
-	e.JSValue().addEventListener(k, jshandler)
+	e.JsValue().addEventListener(k, jshandler)
 }
 
 func (e *elem) delJsEventHandler(k string, h eventHandler) {

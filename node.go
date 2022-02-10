@@ -16,8 +16,8 @@ type UI interface {
 	// Kind represents the specific kind of a UI element.
 	Kind() Kind
 
-	// JSValue returns the javascript value linked to the element.
-	JSValue() Value
+	// JsValue returns the javascript value linked to the element.
+	JsValue() Value
 
 	// Reports whether the element is mounted.
 	Mounted() bool
@@ -142,7 +142,7 @@ type EventHandler func(ctx Context, e Event)
 // It panics if the given value is not a pointer.
 func ValueTo(v interface{}) EventHandler {
 	return func(ctx Context, e Event) {
-		value := ctx.JSSrc().Get("value")
+		value := ctx.JsSrc().Get("value")
 		if err := stringTo(value.String(), v); err != nil {
 			panic(errors.New("storing dom element value failed").Wrap(err))
 		}

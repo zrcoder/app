@@ -208,7 +208,7 @@ func newClientBody(d Dispatcher) *htmlBody {
 		elem: elem{
 			ctx:       ctx,
 			ctxCancel: cancel,
-			jsvalue:   body.JSValue().firstElementChild(),
+			jsvalue:   body.JsValue().firstElementChild(),
 			tag:       "div",
 			disp:      d,
 		},

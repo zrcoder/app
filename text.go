@@ -25,7 +25,7 @@ func (t *text) Kind() Kind {
 	return SimpleText
 }
 
-func (t *text) JSValue() Value {
+func (t *text) JsValue() Value {
 	return t.jsvalue
 }
 
@@ -108,7 +108,7 @@ func (t *text) update(n UI) error {
 
 	if t.value != o.value {
 		t.value = o.value
-		t.JSValue().setNodeValue(o.value)
+		t.JsValue().setNodeValue(o.value)
 	}
 
 	return nil

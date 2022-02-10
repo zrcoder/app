@@ -26,7 +26,7 @@ func (v value) Get(p string) Value {
 
 func (v value) Set(p string, x interface{}) {
 	if wrapper, ok := x.(Wrapper); ok {
-		x = jsval(wrapper.JSValue())
+		x = jsval(wrapper.JsValue())
 	}
 	v.Value.Set(p, x)
 }
@@ -43,7 +43,7 @@ func (v value) Invoke(args ...interface{}) Value {
 	return val(v.Value.Invoke(args...))
 }
 
-func (v value) JSValue() Value {
+func (v value) JsValue() Value {
 	return v
 }
 
@@ -296,9 +296,9 @@ func jsval(v Value) js.Value {
 	}
 }
 
-// JSValue returns the underlying syscall/js value of the given Javascript
+// JsValue returns the underlying syscall/js value of the given Javascript
 // value.
-func JSValue(v Value) js.Value {
+func JsValue(v Value) js.Value {
 	return jsval(v)
 }
 
@@ -335,7 +335,7 @@ func cleanArg(v interface{}) interface{} {
 		}
 
 	case Wrapper:
-		return jsval(v.JSValue())
+		return jsval(v.JsValue())
 	}
 
 	return v

@@ -91,7 +91,7 @@ func (r rangeLoop) Kind() Kind {
 	return Selector
 }
 
-func (r rangeLoop) JSValue() Value {
+func (r rangeLoop) JsValue() Value {
 	return nil
 }
 

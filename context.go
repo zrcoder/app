@@ -24,8 +24,8 @@ type Context interface {
 	Src() UI
 
 	// Returns the associated JavaScript value. The is an helper method for:
-	//  ctx.Src.JSValue()
-	JSSrc() Value
+	//  ctx.Src.JsValue()
+	JsSrc() Value
 
 	// Reports whether the app has been updated in background. Use app.Reload()
 	// to load the updated version.
@@ -170,7 +170,7 @@ func (ctx uiContext) Src() UI {
 	return ctx.src
 }
 
-func (ctx uiContext) JSSrc() Value {
+func (ctx uiContext) JsSrc() Value {
 	return ctx.jsSrc
 }
 
@@ -368,7 +368,7 @@ func makeContext(src UI) Context {
 	return uiContext{
 		Context:            src.context(),
 		src:                src,
-		jsSrc:              src.JSValue(),
+		jsSrc:              src.JsValue(),
 		appUpdateAvailable: appUpdateAvailable,
 		page:               src.dispatcher().currentPage(),
 		disp:               src.dispatcher(),

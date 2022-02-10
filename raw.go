@@ -40,7 +40,7 @@ func (r *raw) Kind() Kind {
 	return RawHTML
 }
 
-func (r *raw) JSValue() Value {
+func (r *raw) JsValue() Value {
 	return r.jsvalue
 }
 

@@ -145,9 +145,9 @@ func (c *Compo) Kind() Kind {
 	return Component
 }
 
-// JSValue returns the javascript value of the component root.
-func (c *Compo) JSValue() Value {
-	return c.root.JSValue()
+// JsValue returns the javascript value of the component root.
+func (c *Compo) JsValue() Value {
+	return c.root.JsValue()
 }
 
 // Mounted reports whether the component is mounted.
@@ -396,9 +396,9 @@ func (c *Compo) replaceRoot(n UI) error {
 	c.root = new
 	new.setParent(c.self())
 
-	oldjs := old.JSValue()
-	newjs := n.JSValue()
-	parent.JSValue().replaceChild(newjs, oldjs)
+	oldjs := old.JsValue()
+	newjs := n.JsValue()
+	parent.JsValue().replaceChild(newjs, oldjs)
 
 	dismount(old)
 	return nil

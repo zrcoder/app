@@ -61,7 +61,7 @@ func (c condition) Kind() Kind {
 	return Selector
 }
 
-func (c condition) JSValue() Value {
+func (c condition) JsValue() Value {
 	return nil
 }
 
